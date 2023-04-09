@@ -1,0 +1,159 @@
+\documentclass[twocolumn]{article}
+\usepackage[a4paper,verbose, margin=15mm]{geometry}
+\usepackage{enumitem,graphicx,tabularray}
+\usepackage{fdsymbol}
+\usepackage{awesomebox}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+\pdfinfo{
+	/Title (Unoffical NABU How-To)
+%	/Author (Your PDF author)
+%	/Subject (Your PDF subject)
+%	/Keywords (Your PDF keywords)
+}
+
+\newcommand\Ground{%
+	\mathbin{\text{\begin{tikzpicture}[circuit ee IEC,yscale=0.6,xscale=0.5]
+				\draw (0,2ex) to (0,0) node[ground,rotate=-90,xshift=.65ex] {};
+	\end{tikzpicture}}}%
+}
+\newcounter{taskno}
+\newcommand{\taskLbl}[1]{\refstepcounter{taskno}\label{#1}}
+\newcommand{\taskTable}[1]{
+	\par\vskip0.25cm
+	Table \arabic{taskno}. #1
+}
+\newcommand{\difficulty}[1]{
+	{\color{red}\faWrench}
+	{\ifnum#1>1{\color{red}\faWrench}\else\color{gray}\faWrench\fi}
+	{\ifnum#1>2{\color{red}\faWrench}\else\color{gray}\faWrench\fi}
+	{\ifnum#1>3{\color{red}\faWrench}\else\color{gray}\faWrench\fi}
+	{\ifnum#1>4{\color{red}\faWrench}\else\color{gray}\faWrench\fi}
+}
+
+\setlength{\columnsep}{1cm}
+\setlist[enumerate,1]{wide, labelwidth=!, labelindent=0pt, itemsep=0pt}
+
+\begin{document}
+\twocolumn[\begin{@twocolumnfalse}
+\section{Replacing the NABU Power Supply\hskip0.5cm\difficulty{4}}
+The NABU Personal Computer was developed for the North-American market, and as such, was fitted with a 110-120V power supply unit (PSU). The following section explains how to replace the NABU power supply with a modern, universal power supply.
+Note that the replacement PSU referred to in this guide is the Mean Well RT-65B. Refer to the relevant manufacturer's documentation for connection details when using other makes or models.
+\vskip1em
+\end{@twocolumnfalse}]
+		\subsection{Removing the NABU PSU}
+		\awesomebox[red]{2pt}{\faBolt}{red}{To prevent electric shock, you \textbf{must} disconnect your NABU Personal Computer from mains power before removing the system cover!}
+		\begin{enumerate}
+			\item Remove the outer computer cover by undoing the screws on either side of your NABU system. This will expose the main system board (right) and power supply bay (left).
+			\item Remove the cover over the power supply by undoing the two screws on the right-hand side and lifting the cover upwards.
+			\item \lipsum[1-1]
+		\end{enumerate}
+		\subsection{Removing the NABU fan assembly}
+		As the fan fitted in the NABU power supply bay runs off 110-120V, it is no longer useful and should be removed. A suitable 80x80mm 12V or 5V fan may be fitted in its place.
+		\begin{enumerate}
+			\item  To remove the fan, prise apart the crimp connector and cut the other lead near power button.
+			\item Undo the 4 bolts which hold the assembly in place and remove the fan.
+			\item Remove the remaining part of the fan power lead attached to the power button by gently removing the old heat shrink tubing and cutting the lead as close as possible to the terminal (see Figure \ref{fig:fan}). Then re-cover the terminal and remaining lead with a suitable length of new heat shrink tubing (as shown in Figure \ref{fig:tubing}).
+			\begin{figure}[h!]
+				\includegraphics[width=\columnwidth]{images/psu-image-1a.jpg}
+				\caption{Remove the remaining length of the old fan power lead.}
+				\label{fig:fan}
+			\end{figure}
+			\begin{figure}[h!]
+				\includegraphics[width=\columnwidth]{images/psu-image-1b.jpg}
+				\caption{Cover the power terminal with new heat shrink tubing.}
+				\label{fig:tubing}
+			\end{figure}
+			\item Install the replacement fan using the bolts removed in the previous step, ensuring it is oriented such that air is sucked out of the NABU system. Guide the new fan leads towards the front of the system.
+		\end{enumerate}
+		\subsection{Replacing the mains cable}
+		The mains cable fitted to the NABU may be left in place and the Canada/US power plug replaced with a 3-pin domestic plug as appropriate. If the NABU cable is left in place, make note of the following colours and wire your domestic plug accordingly:
+		\begin{center}
+			\begin{tblr}[caption=foo]{
+					colspec={|c|l|},
+					hline{1,2,5},
+					row{1} = {bg=gray4,fg=white},
+					row{3} = {bg=gray9},
+				}
+				NABU lead & Function \\
+				Green & Earth \\
+				White & Neutral \\
+				Black & Live \\
+			\end{tblr}
+			\taskLbl{tbl:mains}
+			\taskTable{NABU mains lead details.}
+		\end{center}
+		Alternatively, the NABU mains cable can be replaced as following:
+		\begin{enumerate}
+			\item Cut the NABU mains lead on the \textbf{inside} of the NABU system as close as possible to the strain relief bush grommet. Then pull the lead from the outside to free it from the grommet --- this may require some force and wriggling.
+			\item Pass the new cable through the hole in the back of the case and secure it in place with the strain relief grommet recovered from the previous step. Allow enough length for the wires to comfortably reach the front of the NABU.
+			\item Use a crimp tool to attach a ring connector to the Ground lead (green). Then attach a female spade connector to the Live lead (brown). Ensure that each connectors is securely attached to its lead to prevent poor contact.
+			\item Firmly push the spade connector onto the fuse holder terminal. Loop the ring connector over the vertical `ground' post and secure it in place with a nut (as shown in Figure \ref{fig:connectors}). Note that the fuse itself does \textit{not} need to be replaced.
+			\begin{figure}[h!]
+				\includegraphics[width=\columnwidth]{images/psu-image-2.jpg}
+				\caption{Connect the Ground (green) and Live (brown) wires.}
+				\label{fig:connectors}
+			\end{figure}
+		\end{enumerate}
+		\subsection*{Installing the replacement PSU}
+		The NABU requires multiple voltage levels, as detailed in the following table. The first two columns show the Mean Well RT-65B PSU terminals and corresponding levels. The remaining columns show the colour and number of NABU wires that must be connected to each terminal. For examples, both the single grey wire and two orange wires need to be connected to the terminal labelled \texttt{+V2} on the PSU.
+		\begin{center}
+			\begin{tblr}{
+				colspec={|c|c|c|c|},
+				hline{1,2,7},
+				row{1} = {bg=gray4,fg=white},
+				row{3,4,6} = {bg=gray9},
+				cell{3}{1} = {r=2}{c},
+				cell{3}{2} = {r=2}{c}
+			}
+			RT-65B & Level & Colour & Wires \\
+			V3 & -12V & Blue & 1 \\
+			+V2 & +12V & Grey & 1 \\
+			& & Orange & 2 \\
+			COM & Ground & Black & 3 \\
+			+5V & +5V & Red & 3 \\
+			\end{tblr}
+			\taskLbl{tbl:wiring}
+			\taskTable{Motherboard wiring details.}
+		\end{center}
+		To install the replacement PSU:
+	    \begin{enumerate}
+	    	\item If the mains cable was replaced, reattach the short ground lead (green) to the post and fix it in place with a nut.
+	    	\item Place the PSU such that the mounting hole near the \texttt{+5V Adj} trimmer on the PSU is lined up with the front right-hand post in the NABU bay and fix it in place with a screw. Note that the other posts do not line up with the remaining PSU mounting holes, meaning the PSU is kept in place with a single screw.
+	    	\item Attach the mains wires as shown. Be careful not to mix up the mains wires with the wires connected to the NABU motherboard.
+			\begin{center}
+				\begin{tblr}{
+						colspec={|c|c|c|},
+						hline{1,2,5},
+						row{1} = {bg=gray4,fg=white},
+						row{3} = {bg=gray9}
+					}
+					RT-65B & Level & Colour \\
+					L & Live & Black \\
+					N & Neutral & Blue \\
+					$\Ground$ & Ground & Green \\
+				\end{tblr}
+				\taskLbl{tbl:live}
+				\taskTable{Mains wiring details.}
+			\end{center}
+			\item Connect the wires leading from the NABU motherboard, as shown in Table \ref{tbl:wiring} (above) and Figure \ref{fig:terminals}.
+	    	\begin{figure}[h!]
+	    		\includegraphics[width=\columnwidth]{images/psu-image-3.jpg}
+	    		\caption{Connect all wires to the relevant PSU terminals.}
+	    		\label{fig:terminals}
+	    	\end{figure}
+    		\item Check there are no loose parts or unconnected wires --- any wires that remain unconnected must be trimmed and made safe, e.g. by covering them with electrical insulation tape or heat shrink tubing. Once you have satisfied yourself that all wires are correctly and securely connected, replace the NABU PSU cover and fix in place with its 2 screws.
+    		\item Replace the NABU system cover, securing it with 4 screws.
+	    \end{enumerate}
+   % \onecolumn
+    \section*{Disclaimer}
+    Every effort has been made to ensure the accuracy of the information contained in this document. The information presented within is accurate at the time of publication.  Whilst every effort is made to provide accurate information, no warranty or fitness is provided or implied, and the authors and publishers shall have neither liability nor responsibility to any person or entity with respect to any loss or damages arising from its use.
+    All trademarks, logos and brand names are the property of their respective owners. All company, product and service names mentioned in this document are for identification purposes only. Use of these names, trademarks and brands does not imply endorsement.
+    \section*{License}
+    This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+   	\begin{figure}[h!]
+    	\includegraphics[width=3cm]{images/by-nc.png}
+    \end{figure}
+\end{document}
