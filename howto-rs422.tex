@@ -6,25 +6,33 @@
 \footnotetext[1]{See the NABU RetroNet website <https://nabu.ca> for details.}
 
 \section{Network Adaptor cable wiring}
-The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a RS-422 interface, which requires 4 wires for communication between devices. Because of the high transmission (baud) rates involved, a short length of good quality, shielded cable is recommend for the DB-9 to DIN-5 adaptor. The cable needs to be wired as shown in Table~\ref{tbl:adaptor}.
+The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a RS-422 interface, which requires 4 wires for communication between devices. Because of the high transmission (baud) rates involved, a twisted-pair shielded cable is highly recommended for the DB-9 to DIN-5 adaptor (as per the RS-422 standard). Category 5 cable (as used in Ethernet cabling) is available both as shielded twisted pair and as unshielded twisted pair and generally exceeds the recommendations for RS-422, making it an excellent choice --- if no twisted pair cable is available, the length of the adaptor cable \textit{must} be kept as short as possible, and should not exceed 6-8 inches. When using shielded cable, the shielding must only be connected to one of the connectors to avoid ground loop effect.
+
+The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possible, use twisted-pair cable and group the pairs as shown.
 
 \begin{center}
 	\sffamily
 	\begin{tblr}{
-			colspec={|ccccc|},
-			hline{1,3,7},
-			cell{1}{1} = {c=2}{c},
+			colspec={r|cccc|},
+			cell{1}{2} = {c=2}{c},
 			cell{1}{4} = {c=2}{c},
 			row{1} = {font=\bfseries},
 			row{1,2} = {bg=gray4,fg=white},
-			row{4,6} = {bg=gray9}
+			row{5,6} = {bg=gray9},
+			cell{1}{1} = {r=2}{bg=white},
+			cell{3}{1} = {r=2}{},
+			cell{5}{1} = {r=2}{},
+			vline{4} = {3-6}{text=\clap{$\leftrightarrow$}},
+			vline{1} = {3-6}{solid},
+			hline{1} = {2-5}{solid},
+			hline{3,7} = {solid}
 		}
-		NABU (DIN5) & & & RS-422 (DB9)\footnotemark[2] &\\
-		Signal & Pin & & Pin & Signal \\
-		RXD+ & 1 & $\leftrightarrow$ & 1 & T/R+ \\
-		RXD- & 4 & $\leftrightarrow$ & 2 & T/R- \\
-		T/R+ & 5 & $\leftrightarrow$ & 3 & RXD+ \\
-		T/R- & 3 & $\leftrightarrow$ & 4 & RXD- \\
+		& NABU (DIN5) & & RS-422 (DB9)\footnotemark[2] &\\
+		& Signal & Pin & Pin & Signal \\
+		\rotatebox{90}{Pair 1} & RXD+ & 1 & 1 & T/R+ \\
+		& RXD- & 4 & 2 & T/R- \\
+		\rotatebox{90}{Pair 2} & T/R+ & 5 & 3 & RXD+ \\
+		& T/R- & 3 & 4 & RXD- \\
 	\end{tblr}
 	\taskLbl{tbl:adaptor}
 	\taskTable{Adaptor cable wiring.}
@@ -37,12 +45,7 @@ The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a
 	\item To minimise the number of connections that need to be soldered, a MIDI cable may be used. Alternatively, solder the pins of a \underline{male} DIN-5 connector as shown in Figure \ref{fig:din5}. Note that the pin numbers shown in the diagram are for the solder side of the connector. Also note that the \mbox{DIN-5} connector pins are not numbered sequentially.
 \end{enumerate}
 
-\section{DB-9 end of the cable}
-\begin{enumerate}
-	\item Solder the pins on the \underline{female} DB-9 connector as shown in Figure \ref{fig:dsub9}.  Note that the pin numbers shown in the diagram are for the solder side of the connector.
-\end{enumerate}
-
-\begin{figure}[h!]
+\begin{figure}[t!]
 	\begin{center}
 		\scalebox{0.175}{
 			\begin{tikzpicture}[font=\sffamily]
@@ -55,7 +58,7 @@ The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a
 				\draw[line width=1mm,fill=white] (20.5,12) circle (4mm);
 				\draw[line width=1mm,fill=white] (36.5,12) circle (4mm);
 
-				\draw[line width=2mm,fill=white] (7,5) circle (15mm);
+				\draw[line width=2mm,color=red,fill=white] (7,5) circle (15mm);
 				\draw[line width=2mm,fill=white] (32,5) circle (15mm);
 				\node[black,scale=4] at (7,2) {ADAPTOR};
 				\node[black,scale=4] at (32,2) {KEYBOARD};
@@ -90,6 +93,12 @@ The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a
 		\label{fig:din5}
 	\end{center}
 \end{figure}
+
+\section{DB-9 end of the cable}
+\begin{enumerate}
+	\item Solder the pins on the \underline{female} DB-9 connector as shown in Figure \ref{fig:dsub9}.  Note that the pin numbers shown in the diagram are for the solder side of the connector.
+\end{enumerate}
+
 \begin{figure}[h!]
   \begin{center}
 	\scalebox{0.2}{
@@ -139,9 +148,9 @@ The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a
 	\label{fig:dsub9}
   \end{center}
 \end{figure}
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\columnwidth]{images/rs422-image-1.jpg}
-		\caption{DB-9 to DIN-5 Network Adaptor assembly.}
-	\end{center}
-\end{figure}
+%\begin{figure}[t!]
+%	\begin{center}
+%		\includegraphics[width=\columnwidth]{images/rs422-image-1.jpg}
+%		\caption{DB-9 to DIN-5 Network Adaptor assembly.}
+%	\end{center}
+%\end{figure}
