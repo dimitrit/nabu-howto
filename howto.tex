@@ -19,9 +19,9 @@
 	/Keywords (Unofficial, NABU Personal Computer, HowTo, How-To, Minor Repairs)
 }
 
-\newcommand\bbox[1]{
+\newcommand\bbox[2][1mm]{
 	\tikz[baseline=(X.base)]
-	\node (X) [draw, shape=rectangle, rounded corners=1mm, inner sep=1] {\strut #1};
+	\node (X) [draw, shape=rectangle, rounded corners=#1, inner sep=1] {\strut #2};
 }
 \newcommand\Ground{%
 	\mathbin{\text{\begin{tikzpicture}[circuit ee IEC,yscale=0.6,xscale=0.5]
