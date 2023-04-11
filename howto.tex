@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{report}
+\documentclass[twocolumn,twoside,openright]{report}
 \usepackage{standalone}
 \usepackage[a4paper,verbose, margin=15mm]{geometry}
 \usepackage{enumitem,graphicx,tabularray,caption,subcaption}
@@ -61,10 +61,15 @@
 
 \frontmatter
 \include{howto-title}
+\clearpage
+\tableofcontents
+\listoffigures
 
 \mainmatter
 \include{howto-rs422}
+\cleardoublepage
 \include{howto-fan}
+\cleardoublepage
 \include{howto-psu}
 
 \end{document}
