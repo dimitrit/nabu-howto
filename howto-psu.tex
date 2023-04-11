@@ -47,10 +47,11 @@ As the fan fitted in the NABU power supply bay runs off 110-120V, it is no longe
 \section{Replacing the mains cable}
 The mains cable fitted to the NABU may be left in place and the Canada/US power plug replaced with a 3-pin domestic plug as appropriate. If the NABU cable is left in place, make note of the following colours and wire your domestic plug as shown in Table \ref{tbl:mains}.
 \begin{center}
+	\sffamily
 	\begin{tblr}{
 			colspec={|c|l|},
 			hline{1,2,5},
-			row{1} = {bg=gray4,fg=white},
+			row{1} = {bg=gray4,fg=white,font=\bfseries},
 			row{3} = {bg=gray9},
 		}
 		NABU lead & Function \\
@@ -76,20 +77,21 @@ Alternatively, the NABU mains cable can be replaced as following:
 \section{Installing the Mean Well PSU}
 The NABU requires multiple voltage levels, as detailed in the following table. The first two columns show the Mean Well RT-65B PSU terminals and their corresponding levels. The remaining columns show the colour and number of NABU wires that must be connected to each terminal. For example, both the single grey wire and two orange wires need to be connected to the terminal labelled \bbox{+V2} on the PSU.
 \begin{center}
+	\sffamily
 	\begin{tblr}{
 			colspec={|c|c|c|c|},
 			hline{1,2,7},
-			row{1} = {bg=gray4,fg=white},
+			row{1} = {bg=gray4,fg=white,font=\bfseries},
 			row{3,4,6} = {bg=gray9},
 			cell{3}{1} = {r=2}{c},
 			cell{3}{2} = {r=2}{c}
 		}
 		RT-65B & Level & Colour & Wires \\
-		V3 & -12V & Blue & 1 \\
-		+V2 & +12V & Grey & 1 \\
+		\bbox{V3} & -12V & Blue & 1 \\
+		\bbox{+V2} & +12V & Grey & 1 \\
 		& & Orange & 2 \\
-		COM & Ground & Black & 3 \\
-		+5V & +5V & Red & 3 \\
+		\bbox{COM} & Ground & Black & 3 \\
+		\bbox{+5V} & +5V & Red & 3 \\
 	\end{tblr}
 	\taskLbl{tbl:wiring}
 	\taskTable{Motherboard wiring details.}
@@ -100,16 +102,17 @@ To install the replacement PSU:
 	\item Place the Mean Well PSU such that the mounting hole near the \bbox{+5V Adj} trimmer on the PSU is lined up with the front right-hand post in the NABU bay and fix it in place with a screw. Note that the other posts do not line up with the remaining PSU mounting holes, meaning the PSU is kept in place with only a single screw.
 	\item Attach the mains wires as shown. Be careful not to mix up the mains wires with the wires connected to the NABU motherboard.
 	\begin{center}
+		\sffamily
 		\begin{tblr}{
 				colspec={|c|c|c|},
 				hline{1,2,5},
-				row{1} = {bg=gray4,fg=white},
+				row{1} = {bg=gray4,fg=white,font=\bfseries},
 				row{3} = {bg=gray9}
 			}
 			RT-65B & Level & Colour \\
-			L & Live & Black \\
-			N & Neutral & Blue \\
-			$\Ground$ & Ground & Green \\
+			\bbox{~L~\null} & Live & Black \\
+			\bbox{~N~\null} & Neutral & Blue \\
+			\bbox{~$\Ground$~\null} & Ground & Green \\
 		\end{tblr}
 		\taskLbl{tbl:live}
 		\taskTable{Mains wiring details.}
