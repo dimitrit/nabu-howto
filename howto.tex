@@ -4,12 +4,13 @@
 \usepackage{enumitem,graphicx,tabularray,caption,subcaption}
 \usepackage{fdsymbol}
 \usepackage{awesomebox}
-\usepackage{lipsum}
-\usepackage{tikz}
 \usepackage{titlesec}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usetikzlibrary{circuits.ee.IEC}
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{intersections,shapes.arrows,arrows.meta}
+\usetikzlibrary{decorations.pathmorphing,circuits.ee.IEC}
 
 \pdfinfo{
 	/Title (Unoffical NABU How-To Guide)
@@ -62,6 +63,7 @@
 \include{howto-title}
 
 \mainmatter
+\include{howto-rs422}
 \include{howto-fan}
 \include{howto-psu}
 
