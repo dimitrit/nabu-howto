@@ -19,6 +19,22 @@
 	/Keywords (Unofficial, NABU Personal Computer, HowTo, How-To, Minor Repairs)
 }
 
+\newcommand*{\blankpage}{%
+	\onecolumn
+	\vspace*{\fill}
+	\begin{center}
+		This page intentionally left blank.
+	\end{center}
+	\vspace{\fill}
+}
+\makeatletter
+\renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+	\blankpage
+	\thispagestyle{empty}
+	\newpage
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi
+}
+\makeatother
 \newcommand\bbox[2][1mm]{
 	\tikz[baseline=(X.base)]
 	\node (X) [draw, shape=rectangle, rounded corners=#1, inner sep=1] {\strut #2};
@@ -71,5 +87,6 @@
 \include{howto-fan}
 \cleardoublepage
 \include{howto-psu}
+\cleardoublepage
 
 \end{document}
