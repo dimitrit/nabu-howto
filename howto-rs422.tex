@@ -6,7 +6,7 @@
 \footnotetext[1]{See the NABU RetroNet website <https://nabu.ca> for details.}
 
 \section{Network Adaptor cable wiring}
-The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a RS-422 interface, which requires 4 wires for communication between devices. Because of the high transmission (baud) rates involved, a twisted-pair shielded cable is highly recommended for the DB-9 to DIN-5 adaptor (as per the RS-422 standard). Category 5 cable (as used in Ethernet cabling) is available both as shielded twisted pair and as unshielded twisted pair and generally exceeds the recommendations for RS-422, making it an excellent choice --- if no twisted pair cable is available, the length of the adaptor cable \textit{must} be kept as short as possible, and should not exceed 6-8 inches. When using shielded cable, the shielding must only be connected to one of the connectors to avoid ground loop effect.
+The \texttt{ADAPTOR} port on the back of the NABU Personal Computer implements a full-duplex RS-422 interface, which requires 4 wires for communication between devices. Because of the high transmission (baud) rates involved, a twisted-pair shielded cable is highly recommended for the DB-9 to DIN-5 adaptor (as per the RS-422 standard). Category 5 cable (as used in Ethernet cabling) is available both as shielded twisted pair and as unshielded twisted pair and generally exceeds the recommendations for RS-422, making it an excellent choice --- if no twisted pair cable is available, the length of the adaptor cable \textit{must} be kept as short as possible, and should not exceed 6-8 inches. When using shielded cable, the shielding must only be connected to one of the connectors to avoid a ground loop.
 
 The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possible, use twisted-pair cable and group the pairs as shown.
 
@@ -30,9 +30,9 @@ The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possi
 		& NABU (DIN5) & & RS-422 (DB9)\footnotemark[2] &\\
 		& Signal & Pin & Pin & Signal \\
 		\rotatebox{90}{Pair 1} & RXD+ & 1 & 1 & T/R+ \\
-		& RXD- & 4 & 2 & T/R- \\
+		& RXD-- & 4 & 2 & T/R-- \\
 		\rotatebox{90}{Pair 2} & T/R+ & 5 & 3 & RXD+ \\
-		& T/R- & 3 & 4 & RXD- \\
+		& T/R-- & 3 & 4 & RXD-- \\
 	\end{tblr}
 	\taskLbl{tbl:adaptor}
 	\taskTable{Adaptor cable wiring.}
@@ -40,7 +40,7 @@ The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possi
 \footnotetext[2]{Pin numbers shown are for the DTECH DT-5019 USB TO RS485/422 adaptor cable.  Refer to the relevant manufacturer's documentation for other RS-422 interfaces.}
 
 \section{DIN-5 end of the cable}
-\awesomebox[red]{2pt}{\faHandPaper}{red}{To avoid ground loops, the cable shield should only ever be connected to ground at one end of the cable; \textit{never} at both ends. Thus, if the cable shield is connected to ground at the \mbox{RS-422} adaptor end, do \textit{not} also connect the shield to the outer rim of the DIN connector, or vice versa.}
+\awesomebox[red]{2pt}{\faHandPaper}{red}{To avoid a ground loop, the cable shield should only ever be connected to ground at one end of the cable; \textit{never} at both ends. Thus, if the cable shield is connected to ground at the \mbox{RS-422} adaptor end, do \textit{not} also connect the shield to the outer rim of the DIN connector, or vice versa.}
 \begin{enumerate}
 	\item To minimise the number of connections that need to be soldered, a MIDI cable may be used. Alternatively, solder the pins of a \underline{male} DIN-5 connector as shown in Figure \ref{fig:din5}. Note that the pin numbers shown in the diagram are for the solder side of the connector. Also note that the \mbox{DIN-5} connector pins are not numbered sequentially.
 \end{enumerate}
@@ -65,7 +65,7 @@ The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possi
 				\draw[line width=2mm,fill=white] (16,3.7) rectangle (22,5.5); \node[black,scale=4,] at (19,2) {PRINTER};
 			\end{tikzpicture}
 		}
-		\caption[NABU Personal Computer backplane.]{NABU PC backplane.}
+		\caption[Adaptor port position.]{NABU Personal Computer \texttt{ADAPTOR} port.}
 		\label{fig:backplane}
 	\end{center}
 \end{figure}
@@ -81,7 +81,7 @@ The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possi
 					\clip (8.8,3.05) rectangle (11.2,6);
 					\draw[line width=1mm] (10,3) circle (1cm);
 				\end{scope}
-				\foreach \p\k\n\m\r [count=\q from 0] in {{RXD+}/1/10/5/180,{RXD-}/4/13.4/6.4/135,{}/2/15/10/0,{T/R+}/5/13.4/13.6/45,{T/R-}/3/10/15/0} {
+				\foreach \p\k\n\m\r [count=\q from 0] in {{RXD+}/1/10/5/180,{RXD--}/4/13.4/6.4/135,{}/2/15/10/0,{T/R+}/5/13.4/13.6/45,{T/R--}/3/10/15/0} {
 					\ifthenelse{\k=2}{}{
 						\draw[line width=1mm,gray] (\m,\n) -- ++(\r:6cm) node[black,scale=4,text width=1cm,yshift=.5em]{\p};
 					}
