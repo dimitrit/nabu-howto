@@ -44,11 +44,11 @@
 				\draw (0,2ex) to (0,0) node[ground,rotate=-90,xshift=.65ex] {};
 	\end{tikzpicture}}}%
 }
-\newcounter{taskno}
+\newcounter{taskno}[chapter]
 \newcommand{\taskLbl}[1]{\refstepcounter{taskno}\label{#1}}
 \newcommand{\taskTable}[1]{
 	\par\vskip0.25cm
-	Table \arabic{taskno}. #1
+	Table \thechapter.\arabic{taskno}: #1
 }
 \newcommand{\difficulty}[1]{
 	{\color{red}\faWrench}
@@ -85,6 +85,8 @@
 \include{howto-fan}
 \cleardoublepage
 \include{howto-kbd}
+\cleardoublepage
+\include{howto-parallel}
 \cleardoublepage
 \include{howto-rs422}
 \cleardoublepage
