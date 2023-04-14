@@ -81,9 +81,10 @@ The cable must be wired as specified in Table~\ref{tbl:adaptor}. If at all possi
 					\clip (8.8,3.05) rectangle (11.2,6);
 					\draw[line width=1mm] (10,3) circle (1cm);
 				\end{scope}
-				\foreach \p\k\n\m\r [count=\q from 0] in {{RXD+}/1/10/5/180,{RXD--}/4/13.4/6.4/135,{}/2/15/10/0,{T/R+}/5/13.4/13.6/45,{T/R--}/3/10/15/0} {
+				\foreach \p\k\n\m\r [count=\q from 0] in {{RXD+}/1/10/5/190,{RXD--}/4/13.4/6.4/160,{}/2/15/10/0,{T/R+}/5/13.4/13.6/20,{T/R--}/3/10/15/350} {
 					\ifthenelse{\k=2}{}{
-						\draw[line width=1mm,gray] (\m,\n) -- ++(\r:6cm) node[black,scale=4,text width=1cm,yshift=.5em]{\p};
+						\ifthenelse{\q>1}{\def\a{right}\def\w{1.75cm}}{\def\a{left}\def\w{2.25cm}}
+						\draw[line width=1mm,gray] (\m,\n) -- ++(\r:6cm) node[black,scale=4,text width=\w,align=\a]{\p};
 					}
 					\draw[line width=1mm,fill=white] (\m,\n) circle (7mm) node[scale=3,gray,yshift=-1.5em]{\k};
 				}
