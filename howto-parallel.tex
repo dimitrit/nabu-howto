@@ -104,11 +104,11 @@ The \texttt{PRINTER} port on the back of the NABU Personal Computer implements a
 				\draw[line width=1mm] (8.4+\q*2,6.2) circle (4mm);
 				\ifthenelse{\q<7}{\draw[line width=1mm] (9.4+\q*2,3.8) circle (4mm);	}{}
 				\foreach \x in \p {
-					\draw[line width=1mm,gray] (8.4+\q*2,6.6) -- ++(0,6);
+					\draw[line width=1mm,red] (8.4+\q*2,6.6) -- ++(0,6);
 					\draw (8.4+\q*2,14.8) node[rotate=-90,scale=4]{\p};
 				}{}
 				\foreach \x in \k {
-					\draw[line width=1mm,gray] (9.4+\q*2,3.4) -- ++(0,-6);
+					\draw[line width=1mm,red] (9.4+\q*2,3.4) -- ++(0,-6);
 					\draw (9.4+\q*2,-4.8) node[rotate=-90,scale=4,text width=1cm]{\k};
 				}
 				\draw (7.4,6.6) node[scale=3,gray]{8};
@@ -144,17 +144,17 @@ The \texttt{PRINTER} port on the back of the NABU Personal Computer implements a
 
 			\fill[fill=black!50] (4,3.7) rectangle (31,6.3);
 			\foreach \x in {0,1,...,11} {
-				\draw[line width=1mm,gray] (13.7+\x*1.5,3.4) -- ++(0,-5.25);
+				\draw[line width=1mm,red] (13.7+\x*1.5,3.4) -- ++(0,-5.25);
 			}
-			\draw[line width=1mm,gray] (9.2,-1.85) -- ++(21,0);
+			\draw[line width=1mm,red] (9.2,-1.85) -- ++(21,0);
 			\foreach \p\k [count=\q from 0] in {
 				{}/{},{Shield}/{},{Ground}/{},{}/{Ground},{}/{},{}/{},{}/{},{Busy}/{},{}/{},{Data~7}/{},{Data~6}/{},{Data~5}/{},{Data~4}/{},{Data~3}/{},{Data~2}/{},{Data~1}/{},{Data~0}/{},{$\mathsf{\overline{Strobe}}$}/{}}{
 				\foreach \x in \p {
-					\draw[line width=1mm,gray] (4.7+\q*1.5,6.6) -- ++(0,6);
+					\draw[line width=1mm,red] (4.7+\q*1.5,6.6) -- ++(0,6);
 					\draw (4.7+\q*1.5,14.8) node[rotate=-90,scale=4]{\p};
 				}{}
 				\foreach \x in \k {
-					\draw[line width=1mm,gray] (4.7+\q*1.5,3.4) -- ++(0,-6);
+					\draw[line width=1mm,red] (4.7+\q*1.5,3.4) -- ++(0,-6);
 					\draw (4.7+\q*1.5,-4.8) node[rotate=-90,scale=4,text width=1cm]{\k};
 				}
 				\draw[line width=1mm,fill=white] (4.4+\q*1.5,5.5) rectangle (5+\q*1.5,7);

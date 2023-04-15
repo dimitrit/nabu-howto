@@ -88,7 +88,7 @@ The \texttt{KEYBOARD} port on the back of the NABU Personal Computer implements 
 				{
 					\ifthenelse{\q>4}{
 						\pgfmathsetmacro{\r}{\q*30+-165}
-						\draw[line width=1mm,gray] (\m,\n) -- ++(\r:6cm) node[black,scale=4,text width=2.2cm,align=right]{\p};
+						\draw[line width=1mm,red] (\m,\n) -- ++(\r:6cm) node[black,scale=4,text width=2.2cm,align=right]{\p};
 					}{}
 					\draw[line width=1mm,fill=white] (\m,\n) circle (7mm) node[scale=3,gray,yshift=-1.5em]{\k};
 				}
@@ -130,11 +130,11 @@ The \texttt{KEYBOARD} port on the back of the NABU Personal Computer implements 
 				\draw[line width=1mm] (8.4+\q*2,6.2) circle (4mm);
 				\ifthenelse{\q<4}{\draw[line width=1mm] (9.4+\q*2,3.8) circle (4mm);	}{}
 				\foreach \x in \p {
-					\draw[line width=1mm,gray] (8.4+\q*2,6.6) -- ++(0,6);
+					\draw[line width=1mm,red] (8.4+\q*2,6.6) -- ++(0,6);
 					\draw (8.4+\q*2,14.8) node[rotate=-90,scale=4]{\p};
 				}{}
 				\foreach \x in \k {
-					\draw[line width=1mm,gray] (9.4+\q*2,3.4) -- ++(0,-6);
+					\draw[line width=1mm,red] (9.4+\q*2,3.4) -- ++(0,-6);
 					\draw (9.4+\q*2,-4.8) node[rotate=-90,scale=4,text width=1cm]{\k};
 				}
 				\draw (7.4,6.6) node[scale=3,gray]{1};
