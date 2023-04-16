@@ -127,8 +127,8 @@ The \texttt{KEYBOARD} port on the back of the NABU Personal Computer implements 
 			\draw[line width=1mm] (19.5,7) to[out=78,in=0,distance=30] (18,8.5);
 
 			\foreach \p\k [count=\q from 0] in {{T/R+}/{},{T/R--}/{},{}/{},{}/{},{}/{}} {
-				\draw[line width=1mm] (8.4+\q*2,6.2) circle (4mm);
-				\ifthenelse{\q<4}{\draw[line width=1mm] (9.4+\q*2,3.8) circle (4mm);	}{}
+				\fill[line width=1mm] (8.4+\q*2,6.2) circle (4mm);
+				\ifthenelse{\q<4}{\fill[line width=1mm] (9.4+\q*2,3.8) circle (4mm);	}{}
 				\foreach \x in \p {
 					\draw[line width=1mm,red] (8.4+\q*2,6.6) -- ++(0,6);
 					\draw (8.4+\q*2,14.8) node[rotate=-90,scale=4]{\p};
